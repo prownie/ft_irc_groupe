@@ -12,6 +12,7 @@
 #include <map>
 #include "user.hpp"
 #include <cstring>
+#include <algorithm>
 
 #define MAX_FDS 1000
 #define DATA_BUFFER 10000
@@ -39,8 +40,9 @@ public:
 	int		checkPassword(User user);
 	void	parseRequest(std::string request, int fd);
 	void	send_to_fd(std::string code, std::string message, User const & user,
-			int fd, bool dispRealName);
-	void	joinMsgChat(User user, std::string channel, int fd) const;
+			int fd, bool dispRealName) const;
+	void	joinMsgChat(User const & user, std::string channel, int fd, std::string command, std::string message) const;
+	void	send_unregistered(User const & user, int fd) const;
 	std::string	getNbUsers() const;
 	std::string	getNbChannels() const;
 	/* Command functions*/
@@ -57,3 +59,4 @@ public:
 #endif
 
 /*  /connect 127.0.0.1/8002 -password=bla    */
+
