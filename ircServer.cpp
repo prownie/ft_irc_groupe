@@ -413,8 +413,9 @@ void ircServer::helpCommand(std::string & request, int fd) {
 	rep += "QUIT [<Quit message>]\n";
 	rep += "(A client session ends with a QUIT message can add a leave message)\n\n";
 	rep += "PRIVMSG <recipient>(1 or more) <:text to send>\n";
-	rep += "(PRIVMSG is used to send a private message between users)\n\n\n";
+	rep += "(PRIVMSG is used to send a private message between users)\n\n";
 	rep += "OPER (OPER command)\n";
+	rep += "OPER is used to have operator privileges\n\n";
 	rep += "KICK <channel> <user>\n";
 	rep += "(The KICK command is used to remove a user from a channel)\n\n";
 	send(fd, rep.c_str(), rep.length(), 0);
